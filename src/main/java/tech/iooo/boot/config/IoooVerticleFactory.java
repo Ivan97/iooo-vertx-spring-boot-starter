@@ -49,6 +49,8 @@ public class IoooVerticleFactory implements VerticleFactory {
 
     private static class DeploymentAspect extends SimpleAspect {
 
+        private static final long serialVersionUID = -4975424981254459163L;
+
         private static DeploymentAspect deploymentAspectInstance;
 
         private DeploymentAspect() {}
