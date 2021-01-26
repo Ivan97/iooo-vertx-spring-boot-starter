@@ -15,7 +15,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class IoooVertxProperties {
 
     private IoooVertxProperties.Verticle verticle = new IoooVertxProperties.Verticle();
-    private DefaultDeploymentOption defaultDeploymentOption = new IoooVertxProperties.DefaultDeploymentOption();
+    private DefaultDeploymentOptions defaultDeploymentOptions = new DefaultDeploymentOptions();
 
     @Data
     public static class Verticle {
@@ -26,7 +26,7 @@ public class IoooVertxProperties {
     }
 
     @Data
-    public static class DefaultDeploymentOption {
+    public static class DefaultDeploymentOptions {
 
         private String config;
         private List<String> extraClasspath;

@@ -1,6 +1,5 @@
 package tech.iooo.boot.config;
 
-import io.vertx.core.DeploymentOptions;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -10,5 +9,4 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class Constants {
     public String ioooVerticlePrefix = "iooo";
-    public DeploymentOptions defaultDeploymentOptions = new DeploymentOptions();
 }

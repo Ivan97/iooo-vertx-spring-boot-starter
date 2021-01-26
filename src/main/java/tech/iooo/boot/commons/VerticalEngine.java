@@ -31,6 +31,8 @@ public class VerticalEngine implements SmartLifecycle, ApplicationContextAware {
 
     @Autowired
     private Vertx vertx;
+    @Autowired
+    private DeploymentOptions defaultDeploymentOptions;
 
     private boolean running;
     private ApplicationContext applicationContext;
@@ -73,7 +75,7 @@ public class VerticalEngine implements SmartLifecycle, ApplicationContextAware {
                         deploymentOptions.setWorkerPoolName(verticleDeploymentOption.workerPoolName());
                     }
                 } else {
-                    deploymentOptions = Constants.defaultDeploymentOptions;
+                    deploymentOptions = defaultDeploymentOptions;
                 }
                 String verticleClassName = verticleClass.getName();
                 vertx.deployVerticle(Constants.ioooVerticlePrefix + ":" + verticleClassName,
