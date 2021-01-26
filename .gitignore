@@ -1,0 +1,19 @@
+# IntelliJ project files
+.idea
+*.iml
+*.ipr
+*.iws
+out
+gen
+target
+
+*.versionsBackup
+logs
+*.log
+.vertx
+dependency-reduced-pom.xml
+
+*/signingkey.asc
+*/.settings
+*/.project
+*/.classpath
