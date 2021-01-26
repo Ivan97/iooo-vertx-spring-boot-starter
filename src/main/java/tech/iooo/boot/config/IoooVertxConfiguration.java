@@ -1,5 +1,7 @@
 package tech.iooo.boot.config;
 
+import java.util.Optional;
+
 import cn.hutool.core.collection.CollectionUtil;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
@@ -36,13 +38,15 @@ public class IoooVertxConfiguration {
     public DeploymentOptions defaultDeploymentOptions(IoooVertxProperties properties) {
         DeploymentOptions deploymentOptions = new DeploymentOptions();
         DefaultDeploymentOptions config = properties.getDefaultDeploymentOptions();
-        deploymentOptions
-            .setHa(config.getHa())
-            .setInstances(config.getInstances())
-            .setMaxWorkerExecuteTime(config.getMaxWorkerExecuteTime())
-            .setMaxWorkerExecuteTimeUnit(config.getMaxWorkerExecuteTimeUnit())
-            .setWorker(config.getWorker())
-            .setWorkerPoolSize(config.getWorkerPoolSize());
+        Optional.ofNullable(config.getHa()).ifPresent(deploymentOptions::setHa);
+        Optional.ofNullable(config.getInstances()).ifPresent(deploymentOptions::setInstances);
+        Optional.ofNullable(config.getMaxWorkerExecuteTime())
+                .ifPresent(deploymentOptions::setMaxWorkerExecuteTime);
+        Optional.ofNullable(config.getMaxWorkerExecuteTimeUnit())
+                .ifPresent(deploymentOptions::setMaxWorkerExecuteTimeUnit);
+        Optional.ofNullable(config.getWorker()).ifPresent(deploymentOptions::setWorker);
+        Optional.ofNullable(config.getWorkerPoolSize()).ifPresent(deploymentOptions::setWorkerPoolSize);
+
         if (CollectionUtil.isNotEmpty(config.getExtraClasspath())) {
             deploymentOptions.setExtraClasspath(config.getExtraClasspath());
         }

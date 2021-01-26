@@ -1,5 +1,6 @@
 package tech.iooo.boot.config;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -28,16 +29,15 @@ public class IoooVertxProperties {
     @Data
     public static class DefaultDeploymentOptions {
 
-        private String config;
-        private List<String> extraClasspath;
-        private Boolean ha;
-        private Integer instances;
-        private List<String> isolatedClasses;
-        private String isolationGroup;
-        private Long maxWorkerExecuteTime;
-        private TimeUnit maxWorkerExecuteTimeUnit;
-        private Boolean worker;
-        private String workerPoolName;
-        private Integer workerPoolSize;
+        private List<String> extraClasspath = Collections.emptyList();
+        private Boolean ha = false;
+        private Integer instances = 1;
+        private List<String> isolatedClasses = Collections.emptyList();
+        private String isolationGroup = "";
+        private Long maxWorkerExecuteTime = 60_000_000_000L;
+        private TimeUnit maxWorkerExecuteTimeUnit = TimeUnit.NANOSECONDS;
+        private Boolean worker = false;
+        private String workerPoolName = "";
+        private Integer workerPoolSize = 20;
     }
 }
