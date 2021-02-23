@@ -96,18 +96,7 @@ public class VerticalEngine implements SmartLifecycle, ApplicationContextAware {
 
     @Override
     public void stop() {
-        IoooVerticleServicesHolder.activeVerticleServices().values()
-                                  .forEach(info -> vertx.undeploy(info.getId(), res -> {
-                                      if (res.succeeded()) {
-                                          if (log.isInfoEnabled()) {
-                                              log.info("unload verticle [{}] with id [{}].",
-                                                       info.getVerticle().getClass().getSimpleName(), info.getId());
-                                          }
-                                      } else {
-                                          log.error("something happened while unload verticle " + info.getId(),
-                                                    res.cause());
-                                      }
-                                  }));
+        vertx.close();
         this.running = false;
     }
 
